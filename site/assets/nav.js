@@ -26,6 +26,7 @@ const NAV = [
   { section: "Système — couches validées", items: [
     { href: "pages/systeme-moteur.html", label: "Moteur de base", status: "done" },
     { href: "pages/systeme-attributs.html", label: "Attributs & actions", status: "done" },
+    { href: "pages/systeme-combat.html", label: "Combat", status: "done" },
   ]},
   { section: "Playbooks", items: [
     { href: "pages/playbook-conquistador.html", label: "Conquistador", status: "done" },
