@@ -93,13 +93,16 @@ h1, h2, h3, h4 {
   font-style: italic;
   font-size: 18px;
   color: var(--ink-light);
-  max-width: 540px;
   margin: 0 auto;
-  padding: 14px 28px;
-  position: relative;
+  padding: 8px 0;
 }
-.cover .epigraph::before { content: "❝"; position: absolute; left: 0; top: -6px; font-size: 36px; color: var(--gold); }
-.cover .epigraph::after { content: "❞"; position: absolute; right: 0; bottom: -22px; font-size: 36px; color: var(--gold); }
+.cover .epigraph .q {
+  font-style: normal;
+  color: var(--gold);
+  font-size: 1.5em;
+  vertical-align: -0.18em;
+  margin: 0 4px;
+}
 
 h2 {
   font-size: 26px;
@@ -362,7 +365,7 @@ th {
     <h1>Guide du Joueur</h1>
     <div class="subtitle">Aventure et survie aux marges du nouveau monde, 1492+</div>
     <div class="epigraph">
-      Tout ce qui n'est pas dans vos livres.
+      <span class="q">❝</span>Tout ce qui n'est pas dans vos livres.<span class="q">❞</span>
     </div>
   </div>
 
@@ -396,14 +399,14 @@ th {
   <p>Aventure pulp dominante : Indiana Jones, Uncharted, La Momie. L'excitation de la découverte prime sur le désespoir. Mais la mort est réelle, et la survie n'est jamais garantie.</p>
 
   <h3>Cœur de l'expérience</h3>
-  <p>Par ordre décroissant de priorité, ce jeu privilégie :</p>
-  <ol>
+  <p>Ce jeu privilégie cinq dimensions, qui comptent toutes autant :</p>
+  <ul>
     <li><strong>Le mystère</strong> : il y a quelque chose à découvrir, et ce quelque chose est plus profond que la première ruine venue.</li>
     <li><strong>La survie</strong> : le monde est dangereux, et votre personnage est mortel.</li>
     <li><strong>Le personnel</strong> : chaque PJ a une question intérieure (sa <em>veille</em>) qui le travaille.</li>
     <li><strong>Le politique</strong> : couronne, Église, tribus, autres explorateurs : vous n'êtes pas seuls.</li>
     <li><strong>Le moral</strong> : ce que vous faites a un poids. Le jeu ne tranche pas à votre place.</li>
-  </ol>
+  </ul>
 
   <!-- II. COMMENT JOUER -->
   <h2 id="comment-jouer">II. Comment jouer</h2>
