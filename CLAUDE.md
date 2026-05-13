@@ -11,13 +11,16 @@ Un site web statique (`site/`) sert d'**interface MJ** et reflète l'ensemble du
 
 ## Règles de travail
 
-1. **Ne jamais inventer de contenu** pour le JDR. Si une section n'est pas encore définie dans les .md ou en conversation, la page correspondante du site doit rester **vide** (placeholder uniquement) jusqu'à ce que l'utilisateur valide le contenu.
-2. À chaque décision/ajout de contenu pris en conversation, **mettre à jour à la fois** :
-   - le `.md` concerné (ou en créer un nouveau si le sujet le justifie)
-   - la page HTML correspondante dans `site/pages/`
-3. Si une nouvelle section apparaît, créer une nouvelle page HTML et l'ajouter à la nav (`site/assets/nav.js`).
-4. Le site est en français.
-5. Pas de framework, pas de build : HTML + CSS + JS vanilla pour que l'utilisateur puisse ouvrir le site en double-cliquant sur `site/index.html`.
+1. **Ne jamais inventer de contenu** sans validation explicite de l'utilisateur. Si une section n'est pas encore définie ou validée, la page correspondante du site doit rester **vide** (placeholder uniquement).
+2. **Site web = source de vérité unique.** Ne créer aucun nouveau `.md` ; les deux `.md` existants (`jdr-synthese.md`, `jdr-playbook-conquistador.md`) sont conservés en archive mais ne sont **plus mis à jour**. Tout nouveau contenu va directement dans le site.
+3. À chaque ajout de contenu validé :
+   - écrire dans la page HTML correspondante dans `site/pages/`
+   - mettre à jour le statut dans `site/assets/nav.js` (`todo` → `wip` → `done`)
+   - mettre à jour le tableau d'avancement dans `site/index.html` si pertinent
+4. Si une nouvelle section apparaît, créer une nouvelle page HTML et l'ajouter à la nav (`site/assets/nav.js`).
+5. **Workflow de validation playbook par playbook :** proposer le playbook complet en HTML, attendre la validation de l'utilisateur, puis passer au suivant.
+6. Le site est en français.
+7. Pas de framework, pas de build : HTML + CSS + JS vanilla pour que l'utilisateur puisse ouvrir le site en double-cliquant sur `site/index.html`.
 
 ## Structure du site
 

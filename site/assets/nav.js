@@ -24,7 +24,7 @@ const NAV = [
   ]},
   { section: "Playbooks", items: [
     { href: "pages/playbook-conquistador.html", label: "Conquistador", status: "done" },
-    { href: "pages/playbook-cartographe-savant.html", label: "Cartographe-Savant", status: "todo" },
+    { href: "pages/playbook-cartographe-savant.html", label: "Cartographe-Savant", status: "wip" },
     { href: "pages/playbook-renegat.html", label: "Renégat", status: "todo" },
     { href: "pages/playbook-precheur.html", label: "Prêcheur", status: "todo" },
     { href: "pages/playbook-pisteur.html", label: "Pisteur", status: "todo" },
