@@ -22,17 +22,22 @@ Un site web statique (`site/`) sert d'**interface MJ** et reflète l'ensemble du
 6. Le site est en français.
 7. Pas de framework, pas de build : HTML + CSS + JS vanilla pour que l'utilisateur puisse ouvrir le site en double-cliquant sur `site/index.html`.
 
-## Structure du site
+## Structure du projet
 
 ```
-site/
-  index.html              — accueil + table des matières
-  assets/
-    style.css             — styles partagés
-    nav.js                — barre latérale construite depuis une liste de pages
-  pages/
-    <thème>.html          — une page par thème
+JDR Amérique/
+├── site/                        — interface MJ (privée)
+│   ├── index.html
+│   ├── assets/
+│   │   ├── style.css
+│   │   └── nav.js               — barre latérale construite depuis une liste de pages
+│   └── pages/
+│       └── <thème>.html         — une page par thème
+└── fiche-joueur/                — fichiers à distribuer aux joueurs
+    └── fiche-perso.html         — fiche autonome, éditable, sauvegarde localStorage + export JSON + impression
 ```
+
+**Séparation MJ / joueurs :** le dossier `site/` est réservé au MJ. Le dossier `fiche-joueur/` contient les fichiers autonomes destinés aux joueurs (à envoyer par mail/Discord). Ne jamais mettre de contenu MJ-only dans `fiche-joueur/`.
 
 Chaque page suit le template :
 

@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Fiche de personnage — JDR Amérique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+<style>
+:root {
+  --parchment: #f1e3c4;
+  --parchment-dark: #e0cfa6;
+  --parchment-edge: #b89e6c;
+  --ink: #2a1810;
+  --ink-light: #5a4030;
+  --blood: #8b2c1d;
+  --gold: #9c7d3a;
+  --shadow: rgba(60, 30, 10, 0.25);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #2d2218;
+  color: var(--ink);
+  font-family: "Cormorant Garamond", "EB Garamond", Georgia, serif;
+  font-size: 17px;
+  line-height: 1.45;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  padding: 32px 16px 80px;
+  background:
+    radial-gradient(ellipse at top, #3d2e20 0%, #1a1208 100%);
+}
+
+.sheet {
+  width: 100%;
+  max-width: 920px;
+  background:
+    radial-gradient(ellipse at top left, #f6ecd2 0%, transparent 60%),
+    radial-gradient(ellipse at bottom right, #e5d2a3 0%, transparent 70%),
+    linear-gradient(180deg, var(--parchment) 0%, var(--parchment-dark) 100%);
+  border: 1px solid var(--parchment-edge);
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,0.05) inset,
+    0 20px 60px var(--shadow),
+    0 0 80px rgba(120, 80, 30, 0.4);
+  padding: 48px 56px 56px;
+  position: relative;
+}
+
+.sheet::before, .sheet::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  background: radial-gradient(ellipse, rgba(80,50,20,0.18), transparent 70%);
+}
+.sheet::before { top: -10px; left: -20px; width: 200px; height: 150px; }
+.sheet::after { bottom: -10px; right: -20px; width: 200px; height: 150px; }
+
+h1, h2, h3 {
+  font-family: "IM Fell English SC", "Cinzel", serif;
+  font-weight: 500;
+  color: var(--ink);
+  margin: 0;
+}
+
+h1 {
+  text-align: center;
+  font-size: 38px;
+  letter-spacing: 4px;
+  border-bottom: double 4px var(--ink);
+  padding-bottom: 12px;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  text-align: center;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  color: var(--ink-light);
+  font-size: 16px;
+  letter-spacing: 1px;
+  margin-bottom: 28px;
+}
+
+h2 {
+  font-size: 22px;
+  letter-spacing: 3px;
+  margin-top: 28px;
+  margin-bottom: 12px;
+  text-align: center;
+  position: relative;
+}
+
+h2::before, h2::after {
+  content: "✦";
+  color: var(--gold);
+  font-size: 14px;
+  margin: 0 14px;
+  vertical-align: middle;
+}
+
+h3 {
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--ink-light);
+  padding-bottom: 4px;
+  margin-bottom: 10px;
+  color: var(--ink-light);
+}
+
+/* === Inputs === */
+
+input[type="text"], input[type="number"], textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--ink);
+  background: transparent;
+  border: none;
+  border-bottom: 1px dotted var(--ink-light);
+  padding: 2px 4px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+input[type="text"]:focus, input[type="number"]:focus, textarea:focus {
+  border-bottom-color: var(--blood);
+  background: rgba(255,255,255,0.25);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 50px;
+  border: 1px dotted var(--ink-light);
+  border-radius: 2px;
+  padding: 6px 8px;
+}
+
+label {
+  font-family: "IM Fell English SC", serif;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  color: var(--ink-light);
+  display: block;
+  margin-bottom: 2px;
+}
+
+/* === Header block === */
+
+.header-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.header-grid .name input {
+  font-family: "IM Fell English SC", serif;
+  font-size: 24px;
+  letter-spacing: 2px;
+  border-bottom: 1px solid var(--ink);
+}
+
+.quote-block {
+  text-align: center;
+  font-style: italic;
+  color: var(--ink-light);
+  margin: 18px auto 24px;
+  max-width: 700px;
+  padding: 10px 30px;
+  position: relative;
+}
+.quote-block::before { content: "❝"; position: absolute; left: 0; top: -8px; font-size: 32px; color: var(--gold); }
+.quote-block::after { content: "❞"; position: absolute; right: 0; bottom: -16px; font-size: 32px; color: var(--gold); }
+
+/* === Actions === */
+
+.actions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+}
+
+.attribute-block { }
+
+.action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: 1px dotted rgba(90,64,48,0.3);
+}
+
+.action-name {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.dots {
+  display: flex;
+  gap: 4px;
+}
+
+.dot {
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--ink);
+  border-radius: 50%;
+  cursor: pointer;
+  background: transparent;
+  transition: background 0.15s;
+}
+
+.dot.filled {
+  background: var(--ink);
+}
+
+.dot.disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+/* === Stress / jauges / traumas === */
+
+.gauges {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.gauge-block { }
+
+.stress-boxes {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.box {
+  width: 22px;
+  height: 22px;
+  border: 1.5px solid var(--ink);
+  cursor: pointer;
+  background: transparent;
+  position: relative;
+  transition: background 0.15s;
+}
+
+.box.filled {
+  background: var(--ink);
+}
+
+.box.filled::after {
+  content: "✕";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--parchment);
+  font-size: 14px;
+}
+
+.harm-track .box {
+  width: auto;
+  flex: 1;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  font-family: "IM Fell English SC", serif;
+}
+
+.harm-track .box.filled { color: var(--parchment); }
+.harm-track .box.filled::after { content: ""; }
+
+.harm-track {
+  display: flex;
+  gap: 4px;
+}
+
+.trauma-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.trauma-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.trauma-row .box { width: 16px; height: 16px; flex-shrink: 0; }
+
+/* === Two-column blocks === */
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 8px;
+}
+
+/* === Load === */
+
+.load-selector {
+  display: flex;
+  gap: 8px;
+  margin: 8px 0 12px;
+}
+
+.load-option {
+  border: 1px solid var(--ink-light);
+  padding: 6px 14px;
+  cursor: pointer;
+  font-family: "IM Fell English SC", serif;
+  font-size: 13px;
+  letter-spacing: 1px;
+  background: transparent;
+  color: var(--ink);
+  transition: all 0.15s;
+}
+
+.load-option.active {
+  background: var(--ink);
+  color: var(--parchment);
+}
+
+.equipment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.equip-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.equip-row .box { width: 14px; height: 14px; flex-shrink: 0; }
+.equip-row input { font-size: 15px; }
+
+/* === XP === */
+
+.xp-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.xp-dots {
+  display: flex;
+  gap: 3px;
+  flex-wrap: wrap;
+}
+
+.xp-dots .dot { width: 11px; height: 11px; }
+
+/* === Toolbar === */
+
+.toolbar {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 100;
+}
+
+.toolbar button {
+  background: rgba(241, 227, 196, 0.95);
+  border: 1px solid var(--parchment-edge);
+  color: var(--ink);
+  font-family: "IM Fell English SC", serif;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  padding: 8px 14px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  transition: all 0.15s;
+}
+
+.toolbar button:hover {
+  background: var(--ink);
+  color: var(--parchment);
+}
+
+.save-indicator {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  background: rgba(60, 40, 20, 0.85);
+  color: var(--parchment);
+  padding: 6px 14px;
+  font-family: "IM Fell English SC", serif;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  border-radius: 2px;
+  z-index: 100;
+}
+
+.save-indicator.show { opacity: 1; }
+
+/* === Print === */
+
+@media print {
+  @page {
+    margin: 10mm 12mm;
+  }
+
+  body {
+    background: white;
+    padding: 0;
+    color: black;
+    font-size: 12pt;
+    line-height: 1.3;
+  }
+
+  .sheet {
+    box-shadow: none;
+    border: none;
+    background: white;
+    padding: 0;
+    max-width: 100%;
+  }
+  .sheet::before, .sheet::after { display: none; }
+
+  .toolbar, .save-indicator { display: none; }
+
+  /* Resserrer les titres */
+  h1 {
+    font-size: 24pt;
+    letter-spacing: 3px;
+    padding-bottom: 6px;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    font-size: 10pt;
+    margin-bottom: 12px;
+  }
+  h2 {
+    font-size: 14pt;
+    letter-spacing: 2.5px;
+    margin-top: 14px;
+    margin-bottom: 6px;
+  }
+  h2::before, h2::after {
+    color: #888 !important;
+    margin: 0 10px;
+    font-size: 10pt;
+  }
+  h3 {
+    font-size: 10pt;
+    margin-bottom: 5px;
+    padding-bottom: 3px;
+  }
+
+  /* Labels et inputs */
+  label {
+    font-size: 9pt;
+    margin-bottom: 1px;
+  }
+  input[type="text"], input[type="number"] {
+    font-size: 12pt;
+    padding: 2px 3px;
+  }
+  textarea {
+    font-size: 11pt;
+    min-height: 30px;
+    padding: 3px 5px;
+  }
+
+  /* Grilles */
+  .header-grid, .two-col, .gauges {
+    gap: 14px;
+    margin-bottom: 8px;
+  }
+  .actions-grid {
+    gap: 18px;
+  }
+  .action-row {
+    padding: 2px 0;
+  }
+  .action-name {
+    font-size: 12pt;
+  }
+
+  /* Quote */
+  .quote-block {
+    margin: 8px auto 12px;
+    padding: 6px 28px;
+    font-size: 11pt;
+  }
+  .quote-block::before, .quote-block::after {
+    font-size: 22pt;
+  }
+
+  /* Dots et boxes */
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-color: black !important;
+    border-width: 1px;
+  }
+  .dot.filled {
+    background: black !important;
+  }
+  .box {
+    width: 18px;
+    height: 18px;
+    border-color: black !important;
+    border-width: 1px;
+  }
+  .box.filled {
+    background: black !important;
+  }
+  .box.filled::after {
+    font-size: 11px;
+    color: white !important;
+  }
+  .harm-track .box {
+    height: 22px;
+    font-size: 9pt;
+  }
+  .harm-track .box.filled {
+    color: white !important;
+  }
+  .xp-dots .dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  /* Stress */
+  .stress-boxes .box {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Traumas */
+  .trauma-list { gap: 4px; }
+  .trauma-row .box { width: 14px; height: 14px; }
+
+  /* Load */
+  .load-selector {
+    margin: 6px 0 8px;
+  }
+  .load-option {
+    padding: 4px 12px;
+    font-size: 10pt;
+  }
+
+  /* Équipement */
+  .equip-row { gap: 7px; }
+  .equip-row .box { width: 12px; height: 12px; }
+  .equip-row input { font-size: 11pt; padding: 1px 3px; }
+  .equip-row span { font-size: 11pt; }
+  .equipment-list { gap: 3px; }
+
+  /* Forcer la couleur des bordures de champs */
+  input, textarea {
+    border-bottom-style: solid !important;
+    border-color: #aaa !important;
+    background: white !important;
+  }
+  textarea {
+    border: 1px solid #aaa !important;
+  }
+
+  /* Effacer texte saisi et placeholders à l'impression
+     pour obtenir un modèle vierge à remplir au stylo */
+  input[type="text"], input[type="number"], textarea {
+    color: transparent !important;
+    text-shadow: none !important;
+  }
+  input::placeholder, textarea::placeholder {
+    color: transparent !important;
+    opacity: 0 !important;
+  }
+  input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { color: transparent !important; }
+  input::-moz-placeholder, textarea::-moz-placeholder { color: transparent !important; opacity: 0 !important; }
+  input:-ms-input-placeholder, textarea:-ms-input-placeholder { color: transparent !important; }
+
+  h1, h2, h3 { color: black !important; }
+  .subtitle, label, .quote-block::before, .quote-block::after { color: #555 !important; }
+
+  /* Éviter de couper en plein milieu d'un bloc */
+  .actions-grid, .gauges, .trauma-list, .two-col {
+    page-break-inside: avoid;
+  }
+  h2 {
+    page-break-after: avoid;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <button onclick="printSheet()">Imprimer</button>
+  <button onclick="exportJSON()">Exporter</button>
+  <button onclick="document.getElementById('import-file').click()">Importer</button>
+  <button onclick="confirmReset()">Réinitialiser</button>
+  <input type="file" id="import-file" accept=".json" style="display:none" onchange="importJSON(event)">
+</div>
+
+<div class="save-indicator" id="save-indicator">Sauvegardé</div>
+
+<div class="sheet">
+
+  <h1>Fiche du Personnage</h1>
+  <div class="subtitle">— Compagnie d'Exploration de Sa Majesté —</div>
+
+  <!-- IDENTITÉ -->
+  <div class="header-grid">
+    <div class="name">
+      <label>Nom &amp; surnom</label>
+      <input type="text" data-key="nom" placeholder="...">
+    </div>
+    <div>
+      <label>Playbook</label>
+      <input type="text" data-key="playbook" placeholder="Conquistador, Savant...">
+    </div>
+    <div>
+      <label>Origine</label>
+      <input type="text" data-key="origine" placeholder="Castille, Florence...">
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <label>Apparence</label>
+      <textarea data-key="apparence" rows="2"></textarea>
+    </div>
+    <div>
+      <label>Détail révélateur</label>
+      <textarea data-key="detail" rows="2"></textarea>
+    </div>
+  </div>
+
+  <div class="quote-block">
+    <input type="text" data-key="phrase" placeholder="Phrase de fiche — ce que le personnage répète, ce qu'il porte en lui..." style="text-align:center; font-style:italic;">
+  </div>
+
+  <div>
+    <label>Veille — question qui guide l'arc du personnage</label>
+    <input type="text" data-key="veille" placeholder="...">
+  </div>
+
+  <!-- ACTIONS -->
+  <h2>Actions</h2>
+  <div class="actions-grid">
+    <div class="attribute-block">
+      <h3>Perspicacité</h3>
+      <div class="action-row"><span class="action-name">Pister</span><div class="dots" data-action="pister"></div></div>
+      <div class="action-row"><span class="action-name">Déchiffrer</span><div class="dots" data-action="dechiffrer"></div></div>
+      <div class="action-row"><span class="action-name">Observer</span><div class="dots" data-action="observer"></div></div>
+      <div class="action-row"><span class="action-name">Bricoler</span><div class="dots" data-action="bricoler"></div></div>
+    </div>
+    <div class="attribute-block">
+      <h3>Adresse</h3>
+      <div class="action-row"><span class="action-name">Manœuvrer</span><div class="dots" data-action="manoeuvrer"></div></div>
+      <div class="action-row"><span class="action-name">Rôder</span><div class="dots" data-action="roder"></div></div>
+      <div class="action-row"><span class="action-name">Combattre</span><div class="dots" data-action="combattre"></div></div>
+      <div class="action-row"><span class="action-name">Tirer</span><div class="dots" data-action="tirer"></div></div>
+    </div>
+    <div class="attribute-block">
+      <h3>Détermination</h3>
+      <div class="action-row"><span class="action-name">Communier</span><div class="dots" data-action="communier"></div></div>
+      <div class="action-row"><span class="action-name">Commander</span><div class="dots" data-action="commander"></div></div>
+      <div class="action-row"><span class="action-name">Côtoyer</span><div class="dots" data-action="cotoyer"></div></div>
+      <div class="action-row"><span class="action-name">Persuader</span><div class="dots" data-action="persuader"></div></div>
+    </div>
+  </div>
+
+  <!-- STRESS & JAUGES -->
+  <h2>Stress &amp; Jauges</h2>
+  <div class="gauges">
+    <div class="gauge-block">
+      <h3>Stress (9)</h3>
+      <div class="stress-boxes" data-track="stress" data-len="9"></div>
+    </div>
+    <div class="gauge-block">
+      <h3>Physique</h3>
+      <div class="harm-track" data-track="physique" data-labels="Éraflure,Blessé,Grave,Mortel"></div>
+    </div>
+    <div class="gauge-block">
+      <h3>Mental</h3>
+      <div class="harm-track" data-track="mental" data-labels="Troublé,Hanté,Brisé,Perdu"></div>
+    </div>
+  </div>
+
+  <!-- TRAUMAS -->
+  <h2>Traumas</h2>
+  <p style="text-align:center; color:var(--ink-light); font-style:italic; margin: 4px 0 12px;">Au 4<sup>e</sup> trauma — retrait définitif</p>
+  <div class="trauma-list">
+    <div class="trauma-row"><div class="box" data-trauma="0"></div><input type="text" data-key="trauma1" placeholder="Premier trauma..."></div>
+    <div class="trauma-row"><div class="box" data-trauma="1"></div><input type="text" data-key="trauma2" placeholder="Deuxième trauma..."></div>
+    <div class="trauma-row"><div class="box" data-trauma="2"></div><input type="text" data-key="trauma3" placeholder="Troisième trauma..."></div>
+    <div class="trauma-row"><div class="box" data-trauma="3"></div><input type="text" data-key="trauma4" placeholder="Quatrième trauma — retrait..."></div>
+  </div>
+
+  <!-- CAPACITÉS -->
+  <h2>Capacités spéciales</h2>
+  <div class="two-col">
+    <div>
+      <label>Capacité de départ</label>
+      <textarea data-key="capacite-depart" rows="3" placeholder="Nom + effet de la capacité choisie à la création..."></textarea>
+    </div>
+    <div>
+      <label>Capacités acquises (8 XP chacune)</label>
+      <textarea data-key="capacites-acquises" rows="3" placeholder="Capacités débloquées en cours de campagne..."></textarea>
+    </div>
+  </div>
+
+  <!-- VICE -->
+  <h2>Vice</h2>
+  <div>
+    <label>Vice choisi</label>
+    <input type="text" data-key="vice" placeholder="Le jeu, la chair, le vin, l'orgueil, l'étude...">
+  </div>
+
+  <!-- PNJ ATTACHÉ -->
+  <h2>PNJ attaché <span style="font-size:13px; color:var(--ink-light); font-style:italic; letter-spacing:0;">— si capacité prise</span></h2>
+  <div class="two-col">
+    <div>
+      <label>Nom &amp; rapport au PJ</label>
+      <input type="text" data-key="pnj-nom" placeholder="Écuyer, disciple, sergent...">
+    </div>
+    <div>
+      <label>3 actions à 1 point</label>
+      <input type="text" data-key="pnj-actions" placeholder="Ex. Combattre 1, Pister 1, Côtoyer 1">
+    </div>
+  </div>
+  <div style="margin-top:6px;">
+    <label>Notes</label>
+    <textarea data-key="pnj-notes" rows="2" placeholder="Apparence, histoire, lien..."></textarea>
+  </div>
+
+  <!-- LOAD & ÉQUIPEMENT -->
+  <h2>Load &amp; Équipement</h2>
+  <p style="text-align:center; color:var(--ink-light); font-style:italic; margin: 4px 0 8px;">Choisir le niveau en début d'expédition. Cocher les objets au fur et à mesure de leur usage.</p>
+  <div style="display:flex; justify-content:center;">
+    <div class="load-selector" data-load>
+      <button type="button" class="load-option" data-value="3">3 — Léger</button>
+      <button type="button" class="load-option" data-value="5">5 — Normal</button>
+      <button type="button" class="load-option" data-value="6">6 — Lourd</button>
+      <button type="button" class="load-option" data-value="7">7+ — Surchargé</button>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <h3>Objets standards</h3>
+      <div class="equipment-list" id="standard-equip"></div>
+    </div>
+    <div>
+      <h3>Objets de playbook</h3>
+      <div class="equipment-list" id="playbook-equip"></div>
+    </div>
+  </div>
+
+  <!-- XP -->
+  <h2>Expérience</h2>
+  <div class="xp-row">
+    <span style="font-family:'IM Fell English SC',serif; letter-spacing:2px;">XP</span>
+    <div class="xp-dots" data-track="xp" data-len="8"></div>
+    <span style="color:var(--ink-light); font-style:italic; margin-left:auto;">8 XP = 1 nouvelle capacité</span>
+  </div>
+
+  <!-- NOTES LIBRES -->
+  <h2>Notes libres</h2>
+  <textarea data-key="notes" rows="4" placeholder="Découvertes, indices, dettes, contacts, rumeurs..."></textarea>
+
+</div>
+
+<script>
+// === Modèle de données ===
+const STORAGE_KEY = "jdr-amerique-fiche-perso";
+
+const ACTIONS = ["pister","dechiffrer","observer","bricoler",
+                 "manoeuvrer","roder","combattre","tirer",
+                 "communier","commander","cotoyer","persuader"];
+
+const STANDARD_ITEMS = [
+  "Vêtements adaptés au climat",
+  "Sac de voyage",
+  "Vivres pour quelques jours",
+  "Trousse de premiers soins",
+  "Briquet et chandelles",
+  "Corde solide (2)",
+  "Outil polyvalent",
+  "Monnaie / objets de troc",
+];
+
+const state = {
+  // texte
+  nom: "", playbook: "", origine: "",
+  apparence: "", detail: "",
+  phrase: "", veille: "",
+  "capacite-depart": "", "capacites-acquises": "",
+  vice: "",
+  "pnj-nom": "", "pnj-actions": "", "pnj-notes": "",
+  notes: "",
+  trauma1: "", trauma2: "", trauma3: "", trauma4: "",
+  // actions (0-4)
+  actions: Object.fromEntries(ACTIONS.map(a => [a, 0])),
+  // pistes
+  stress: 0,
+  physique: 0,
+  mental: 0,
+  xp: 0,
+  // traumas cochés
+  traumasCoches: [false, false, false, false],
+  // load
+  load: null,
+  // équipement
+  standardEquip: STANDARD_ITEMS.map(name => ({ name, checked: false })),
+  playbookEquip: Array.from({length: 12}, () => ({ name: "", checked: false })),
+};
+
+// === Sauvegarde / chargement ===
+function save() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  showSaved();
+}
+
+function load() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (!raw) return;
+  try {
+    const data = JSON.parse(raw);
+    Object.assign(state, data);
+    // s'assurer que les tableaux ont la bonne longueur
+    if (!Array.isArray(state.traumasCoches) || state.traumasCoches.length !== 4)
+      state.traumasCoches = [false, false, false, false];
+    if (!Array.isArray(state.standardEquip) || state.standardEquip.length !== STANDARD_ITEMS.length)
+      state.standardEquip = STANDARD_ITEMS.map(name => ({ name, checked: false }));
+  } catch (e) {
+    console.error("Erreur de chargement", e);
+  }
+}
+
+let saveTimeout;
+function scheduleSave() {
+  clearTimeout(saveTimeout);
+  saveTimeout = setTimeout(save, 300);
+}
+
+function showSaved() {
+  const el = document.getElementById("save-indicator");
+  el.classList.add("show");
+  clearTimeout(showSaved._t);
+  showSaved._t = setTimeout(() => el.classList.remove("show"), 1200);
+}
+
+// === Rendering ===
+function renderDots(container, value, max, onClick) {
+  container.innerHTML = "";
+  for (let i = 1; i <= max; i++) {
+    const dot = document.createElement("div");
+    dot.className = "dot" + (i <= value ? " filled" : "");
+    dot.addEventListener("click", () => {
+      // cliquer sur le dot rempli courant le décoche, sinon remplit jusque-là
+      const newValue = (i === value) ? i - 1 : i;
+      onClick(newValue);
+    });
+    container.appendChild(dot);
+  }
+}
+
+function renderBoxes(container, value, max, onClick) {
+  container.innerHTML = "";
+  for (let i = 1; i <= max; i++) {
+    const b = document.createElement("div");
+    b.className = "box" + (i <= value ? " filled" : "");
+    b.addEventListener("click", () => {
+      const newValue = (i === value) ? i - 1 : i;
+      onClick(newValue);
+    });
+    container.appendChild(b);
+  }
+}
+
+function renderHarmTrack(container, value, labels, onClick) {
+  container.innerHTML = "";
+  labels.forEach((label, idx) => {
+    const i = idx + 1;
+    const b = document.createElement("div");
+    b.className = "box" + (i <= value ? " filled" : "");
+    b.textContent = label;
+    b.addEventListener("click", () => {
+      const newValue = (i === value) ? i - 1 : i;
+      onClick(newValue);
+    });
+    container.appendChild(b);
+  });
+}
+
+function render() {
+  // Inputs texte
+  document.querySelectorAll("[data-key]").forEach(el => {
+    const key = el.dataset.key;
+    if (el.value !== state[key]) el.value = state[key] || "";
+  });
+
+  // Actions (dots 0-4)
+  ACTIONS.forEach(action => {
+    const c = document.querySelector(`[data-action="${action}"]`);
+    renderDots(c, state.actions[action] || 0, 4, v => {
+      state.actions[action] = v;
+      render();
+      scheduleSave();
+    });
+  });
+
+  // Stress
+  const stressEl = document.querySelector('[data-track="stress"]');
+  renderBoxes(stressEl, state.stress, 9, v => {
+    state.stress = v;
+    render();
+    scheduleSave();
+  });
+
+  // Physique
+  const phys = document.querySelector('[data-track="physique"]');
+  renderHarmTrack(phys, state.physique, ["Éraflure","Blessé","Grave","Mortel"], v => {
+    state.physique = v;
+    render();
+    scheduleSave();
+  });
+
+  // Mental
+  const ment = document.querySelector('[data-track="mental"]');
+  renderHarmTrack(ment, state.mental, ["Troublé","Hanté","Brisé","Perdu"], v => {
+    state.mental = v;
+    render();
+    scheduleSave();
+  });
+
+  // Traumas (cases individuelles)
+  document.querySelectorAll("[data-trauma]").forEach(el => {
+    const idx = parseInt(el.dataset.trauma);
+    el.classList.toggle("filled", !!state.traumasCoches[idx]);
+  });
+
+  // XP
+  const xpEl = document.querySelector('[data-track="xp"]');
+  renderDots(xpEl, state.xp, 8, v => {
+    state.xp = v;
+    render();
+    scheduleSave();
+  });
+
+  // Load
+  document.querySelectorAll(".load-option").forEach(btn => {
+    btn.classList.toggle("active", parseInt(btn.dataset.value) === state.load);
+  });
+
+  // Équipement standard
+  const stdContainer = document.getElementById("standard-equip");
+  stdContainer.innerHTML = "";
+  state.standardEquip.forEach((item, idx) => {
+    const row = document.createElement("div");
+    row.className = "equip-row";
+    const box = document.createElement("div");
+    box.className = "box" + (item.checked ? " filled" : "");
+    box.addEventListener("click", () => {
+      state.standardEquip[idx].checked = !state.standardEquip[idx].checked;
+      render();
+      scheduleSave();
+    });
+    const span = document.createElement("span");
+    span.textContent = item.name;
+    span.style.flex = "1";
+    row.appendChild(box);
+    row.appendChild(span);
+    stdContainer.appendChild(row);
+  });
+
+  // Équipement playbook
+  const pbContainer = document.getElementById("playbook-equip");
+  pbContainer.innerHTML = "";
+  state.playbookEquip.forEach((item, idx) => {
+    const row = document.createElement("div");
+    row.className = "equip-row";
+    const box = document.createElement("div");
+    box.className = "box" + (item.checked ? " filled" : "");
+    box.addEventListener("click", () => {
+      state.playbookEquip[idx].checked = !state.playbookEquip[idx].checked;
+      render();
+      scheduleSave();
+    });
+    const input = document.createElement("input");
+    input.type = "text";
+    input.value = item.name;
+    input.placeholder = "Objet du playbook...";
+    input.addEventListener("input", () => {
+      state.playbookEquip[idx].name = input.value;
+      scheduleSave();
+    });
+    row.appendChild(box);
+    row.appendChild(input);
+    pbContainer.appendChild(row);
+  });
+}
+
+// === Bindings inputs texte ===
+function bindTextInputs() {
+  document.querySelectorAll("[data-key]").forEach(el => {
+    el.addEventListener("input", () => {
+      state[el.dataset.key] = el.value;
+      scheduleSave();
+    });
+  });
+}
+
+// === Traumas cases ===
+function bindTraumas() {
+  document.querySelectorAll("[data-trauma]").forEach(el => {
+    el.addEventListener("click", () => {
+      const idx = parseInt(el.dataset.trauma);
+      state.traumasCoches[idx] = !state.traumasCoches[idx];
+      render();
+      scheduleSave();
+    });
+  });
+}
+
+// === Load buttons ===
+function bindLoad() {
+  document.querySelectorAll(".load-option").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const v = parseInt(btn.dataset.value);
+      state.load = (state.load === v) ? null : v;
+      render();
+      scheduleSave();
+    });
+  });
+}
+
+// === Impression — vide le titre du document pour éviter qu'il apparaisse
+// dans l'en-tête de page imprimé ===
+function printSheet() {
+  const originalTitle = document.title;
+  document.title = "";
+  // Restaurer après l'impression (Chrome/Edge/Firefox déclenchent afterprint)
+  const restore = () => {
+    document.title = originalTitle;
+    window.removeEventListener("afterprint", restore);
+  };
+  window.addEventListener("afterprint", restore);
+  setTimeout(() => window.print(), 50);
+  // Filet de sécurité si afterprint ne se déclenche pas (vieux navigateurs)
+  setTimeout(() => { if (!document.title) document.title = originalTitle; }, 5000);
+}
+
+// === Export / Import / Reset ===
+function exportJSON() {
+  const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  const name = (state.nom || "personnage").replace(/[^a-zA-Z0-9_-]/g, "_");
+  a.download = `fiche-${name}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function importJSON(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const data = JSON.parse(e.target.result);
+      Object.assign(state, data);
+      render();
+      save();
+    } catch (err) {
+      alert("Fichier invalide.");
+    }
+  };
+  reader.readAsText(file);
+  event.target.value = "";
+}
+
+function confirmReset() {
+  if (confirm("Réinitialiser la fiche ? Toutes les données seront perdues.")) {
+    localStorage.removeItem(STORAGE_KEY);
+    location.reload();
+  }
+}
+
+// === Init ===
+load();
+bindTextInputs();
+bindTraumas();
+bindLoad();
+render();
+</script>
+
+</body>
+</html>
