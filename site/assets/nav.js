@@ -9,6 +9,11 @@ const NAV = [
     { href: "pages/these.html", label: "Thèse de l'univers", status: "done" },
     { href: "pages/ton.html", label: "Ton et registre", status: "done" },
   ]},
+  { section: "Comment jouer", items: [
+    { href: "pages/comment-jouer.html", label: "Vue d'ensemble", status: "done" },
+    { href: "pages/creation-personnage.html", label: "Création de personnage", status: "wip" },
+    { href: "pages/lexique.html", label: "Lexique", status: "wip" },
+  ]},
   { section: "Univers", items: [
     { href: "pages/histoire.html", label: "Histoire de l'univers", status: "done" },
     { href: "pages/peuples.html", label: "Peuples", status: "wip" },
