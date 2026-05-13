@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Guide du Joueur · JDR Amérique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+<style>
+:root {
+  --parchment: #f1e3c4;
+  --parchment-dark: #e0cfa6;
+  --parchment-edge: #b89e6c;
+  --ink: #2a1810;
+  --ink-light: #5a4030;
+  --blood: #8b2c1d;
+  --gold: #9c7d3a;
+  --shadow: rgba(60, 30, 10, 0.25);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #2d2218;
+  color: var(--ink);
+  font-family: "Cormorant Garamond", "EB Garamond", Georgia, serif;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  padding: 32px 16px 80px;
+  background: radial-gradient(ellipse at top, #3d2e20 0%, #1a1208 100%);
+}
+
+.sheet {
+  width: 100%;
+  max-width: 880px;
+  background:
+    radial-gradient(ellipse at top left, #f6ecd2 0%, transparent 60%),
+    radial-gradient(ellipse at bottom right, #e5d2a3 0%, transparent 70%),
+    linear-gradient(180deg, var(--parchment) 0%, var(--parchment-dark) 100%);
+  border: 1px solid var(--parchment-edge);
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,0.05) inset,
+    0 20px 60px var(--shadow),
+    0 0 80px rgba(120, 80, 30, 0.4);
+  padding: 56px 64px;
+}
+
+h1, h2, h3, h4 {
+  font-family: "IM Fell English SC", "Cinzel", serif;
+  font-weight: 500;
+  color: var(--ink);
+  margin: 0;
+}
+
+.cover {
+  text-align: center;
+  padding: 40px 0 24px;
+  border-bottom: double 4px var(--ink);
+  margin-bottom: 36px;
+}
+
+.cover h1 {
+  font-size: 46px;
+  letter-spacing: 6px;
+  margin-bottom: 8px;
+}
+
+.cover .subtitle {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 19px;
+  color: var(--ink-light);
+  letter-spacing: 1.5px;
+  margin-bottom: 24px;
+}
+
+.cover .tagline {
+  font-family: "IM Fell English SC", serif;
+  letter-spacing: 3px;
+  font-size: 14px;
+  color: var(--gold);
+  margin-bottom: 28px;
+}
+
+.cover .epigraph {
+  font-style: italic;
+  font-size: 18px;
+  color: var(--ink-light);
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 14px 28px;
+  position: relative;
+}
+.cover .epigraph::before { content: "❝"; position: absolute; left: 0; top: -6px; font-size: 36px; color: var(--gold); }
+.cover .epigraph::after { content: "❞"; position: absolute; right: 0; bottom: -22px; font-size: 36px; color: var(--gold); }
+
+h2 {
+  font-size: 26px;
+  letter-spacing: 3px;
+  margin-top: 44px;
+  margin-bottom: 18px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--ink-light);
+  position: relative;
+}
+
+h2::before {
+  content: "✦";
+  color: var(--gold);
+  margin-right: 14px;
+  font-size: 18px;
+  vertical-align: middle;
+}
+
+h3 {
+  font-size: 19px;
+  margin-top: 22px;
+  margin-bottom: 8px;
+  letter-spacing: 1.5px;
+  color: var(--ink-light);
+}
+
+h4 {
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin: 16px 0 6px;
+}
+
+p { margin: 8px 0 12px; }
+
+a {
+  color: var(--blood);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--blood);
+}
+a:hover { color: var(--ink); border-bottom-style: solid; }
+
+strong { color: var(--ink); font-weight: 600; }
+em { font-style: italic; color: var(--ink-light); }
+
+ul, ol {
+  padding-left: 24px;
+  margin: 8px 0 12px;
+}
+li { margin: 4px 0; }
+
+blockquote {
+  margin: 16px 0;
+  padding: 8px 22px;
+  border-left: 3px solid var(--gold);
+  font-style: italic;
+  color: var(--ink-light);
+}
+
+.callout {
+  background: rgba(156, 125, 58, 0.08);
+  border: 1px solid var(--gold);
+  border-radius: 2px;
+  padding: 14px 20px;
+  margin: 18px 0;
+}
+
+.callout.note {
+  border-color: var(--ink-light);
+  background: rgba(90, 64, 48, 0.06);
+}
+
+.callout strong { color: var(--ink); }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+}
+
+th, td {
+  border: 1px solid var(--ink-light);
+  padding: 8px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background: rgba(156, 125, 58, 0.12);
+  font-family: "IM Fell English SC", serif;
+  letter-spacing: 1.5px;
+  font-size: 14px;
+}
+
+/* === Sommaire === */
+
+.toc {
+  background: rgba(255,255,255,0.2);
+  border: 1px solid var(--ink-light);
+  padding: 22px 28px;
+  margin: 24px 0 40px;
+}
+
+.toc h3 {
+  margin: 0 0 12px;
+  text-align: center;
+  color: var(--ink);
+}
+
+.toc ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  columns: 2;
+  column-gap: 32px;
+}
+
+.toc li {
+  margin: 4px 0;
+  break-inside: avoid;
+}
+
+.toc a {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: none;
+  color: var(--ink);
+  gap: 6px;
+}
+
+.toc a::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px dotted var(--ink-light);
+  margin: 0 4px 4px;
+}
+
+.toc a:hover { color: var(--blood); }
+
+.toc .num {
+  font-family: "IM Fell English SC", serif;
+  color: var(--gold);
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+/* === Toolbar === */
+
+.toolbar {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 100;
+}
+
+.toolbar button {
+  background: rgba(241, 227, 196, 0.95);
+  border: 1px solid var(--parchment-edge);
+  color: var(--ink);
+  font-family: "IM Fell English SC", serif;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  padding: 8px 14px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.toolbar button:hover {
+  background: var(--ink);
+  color: var(--parchment);
+}
+
+/* === Pull quote === */
+
+.pull {
+  font-size: 22px;
+  font-style: italic;
+  text-align: center;
+  color: var(--ink-light);
+  padding: 16px 40px;
+  margin: 24px auto;
+  max-width: 600px;
+  position: relative;
+}
+.pull::before, .pull::after { color: var(--gold); }
+
+/* === Lexique === */
+
+.lexicon dt {
+  font-family: "IM Fell English SC", serif;
+  letter-spacing: 1.5px;
+  font-size: 15px;
+  color: var(--ink);
+  margin-top: 12px;
+}
+.lexicon dd {
+  margin: 4px 0 8px 0;
+  color: var(--ink-light);
+}
+
+/* === Print === */
+
+@media print {
+  @page { margin: 14mm 16mm; }
+  body {
+    background: white;
+    padding: 0;
+    color: black;
+    font-size: 11pt;
+    line-height: 1.35;
+  }
+  .sheet {
+    box-shadow: none;
+    border: none;
+    background: white;
+    padding: 0;
+    max-width: 100%;
+  }
+  .toolbar { display: none; }
+  h1, h2, h3, h4 { color: black !important; }
+  h2 {
+    font-size: 16pt;
+    margin-top: 24px;
+    page-break-after: avoid;
+  }
+  h3 { font-size: 13pt; page-break-after: avoid; }
+  h4 { font-size: 10pt; }
+  .cover {
+    padding: 20px 0 12px;
+    margin-bottom: 18px;
+  }
+  .cover h1 { font-size: 30pt; }
+  .cover .subtitle { font-size: 13pt; }
+  .cover .epigraph { font-size: 12pt; }
+  .toc { padding: 12px 16px; margin: 12px 0 24px; }
+  .toc ol { columns: 2; column-gap: 22px; }
+  .callout, .pull, blockquote, table { page-break-inside: avoid; }
+  a { color: black; border-bottom: none; }
+  .pull { font-size: 14pt; padding: 8px 30px; }
+}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <button onclick="printGuide()">Imprimer</button>
+</div>
+
+<div class="sheet">
+
+  <!-- COUVERTURE -->
+  <div class="cover">
+    <div class="tagline">✦ Jeu de Rôle ✦</div>
+    <h1>Guide du Joueur</h1>
+    <div class="subtitle">Aventure et survie aux marges du nouveau monde, 1492+</div>
+    <div class="epigraph">
+      Tout ce qui n'est pas dans vos livres.
+    </div>
+  </div>
+
+  <!-- SOMMAIRE -->
+  <div class="toc">
+    <h3>Sommaire</h3>
+    <ol>
+      <li><a href="#intro"><span><span class="num">I.</span> Introduction</span></a></li>
+      <li><a href="#comment-jouer"><span><span class="num">II.</span> Comment jouer</span></a></li>
+      <li><a href="#dice"><span><span class="num">III.</span> Le système de résolution</span></a></li>
+      <li><a href="#stress"><span><span class="num">IV.</span> Stress, jauges &amp; traumas</span></a></li>
+      <li><a href="#actions"><span><span class="num">V.</span> Attributs et actions</span></a></li>
+      <li><a href="#creation"><span><span class="num">VI.</span> Création de personnage</span></a></li>
+      <li><a href="#identity"><span><span class="num">VII.</span> Vice, veille &amp; identité</span></a></li>
+      <li><a href="#load"><span><span class="num">VIII.</span> Équipement et Load</span></a></li>
+      <li><a href="#magic"><span><span class="num">IX.</span> Au-delà des règles</span></a></li>
+      <li><a href="#xp"><span><span class="num">X.</span> Progression</span></a></li>
+      <li><a href="#death"><span><span class="num">XI.</span> Mort &amp; folie</span></a></li>
+      <li><a href="#lex"><span><span class="num">XII.</span> Lexique</span></a></li>
+    </ol>
+  </div>
+
+  <!-- I. INTRODUCTION -->
+  <h2 id="intro">I. Introduction</h2>
+
+  <p>À la fin du XV<sup>e</sup> siècle, les Européens découvrent un nouveau continent. Vos personnages sont parmi les premiers à le fouler. Mandatés par la couronne (espagnole, portugaise, ou simplement payés par elle), vous explorez des terres dont les rumeurs disent qu'elles cachent plus que de l'or.</p>
+
+  <p>Ce que vous y trouverez ne tient dans aucun livre que vous avez lu. Ce jeu vous propose d'aller voir.</p>
+
+  <h3>Ton et registre</h3>
+  <p>Aventure pulp dominante : Indiana Jones, Uncharted, La Momie. L'excitation de la découverte prime sur le désespoir. Mais la mort est réelle, et la survie n'est jamais garantie.</p>
+
+  <h3>Cœur de l'expérience</h3>
+  <p>Par ordre décroissant de priorité, ce jeu privilégie :</p>
+  <ol>
+    <li><strong>Le mystère</strong> : il y a quelque chose à découvrir, et ce quelque chose est plus profond que la première ruine venue.</li>
+    <li><strong>La survie</strong> : le monde est dangereux, et votre personnage est mortel.</li>
+    <li><strong>Le personnel</strong> : chaque PJ a une question intérieure (sa <em>veille</em>) qui le travaille.</li>
+    <li><strong>Le politique</strong> : couronne, Église, tribus, autres explorateurs : vous n'êtes pas seuls.</li>
+    <li><strong>Le moral</strong> : ce que vous faites a un poids. Le jeu ne tranche pas à votre place.</li>
+  </ol>
+
+  <!-- II. COMMENT JOUER -->
+  <h2 id="comment-jouer">II. Comment jouer</h2>
+
+  <p>Un jeu de rôle se joue autour d'une table. Une personne joue le <strong>maître du jeu</strong> (MJ) : elle décrit le monde, incarne les PNJ (personnages non-joueurs), arbitre les règles. Les autres joueurs incarnent chacun un <strong>personnage-joueur</strong> (PJ), un explorateur sur les côtes du nouveau monde.</p>
+
+  <p>Pas de plateau, pas de cartes à pioche. Tout se passe en conversation : le MJ décrit une situation, les joueurs disent ce que font leurs personnages, et quand l'issue est incertaine, on lance les dés.</p>
+
+  <h3>Le déroulement d'une scène</h3>
+  <ol>
+    <li><strong>Le MJ décrit la situation.</strong> « Vous arrivez à la lisière de la jungle. Un homme en armure d'os vous observe depuis l'orée d'une clairière. Il ne bouge pas. »</li>
+    <li><strong>Le joueur déclare ce qu'il veut faire.</strong> « Je m'approche lentement et je lui parle en arawak. »</li>
+    <li><strong>Le MJ détermine si c'est incertain.</strong> Si oui, il choisit l'<strong>action</strong> concernée parmi les douze, évalue la <strong>position</strong> et l'<strong>effet</strong>, et demande un jet.</li>
+    <li><strong>Le joueur lance les dés</strong> (autant de d6 que son score dans l'action) et garde le meilleur.</li>
+    <li><strong>Tous narrent le résultat ensemble</strong>, en tenant compte de la position (à quel point l'échec fait mal) et de l'effet (à quel point la réussite est ample).</li>
+  </ol>
+
+  <h3>Rôle du joueur</h3>
+  <ul>
+    <li>Décrire ce que le personnage <strong>tente</strong> de faire, pas le résultat, qui se décide aux dés.</li>
+    <li>Gérer ses ressources : <strong>stress</strong>, jauges, <strong>Load</strong>, objets cochés.</li>
+    <li>Dépenser du stress pour <strong>pousser</strong> un jet, <strong>aider</strong> un camarade, <strong>résister</strong> à une conséquence, ou déclencher un <strong>flashback</strong>.</li>
+    <li>Faire vivre la <strong>veille</strong> du personnage et son <strong>vice</strong>.</li>
+  </ul>
+
+  <h3>Rôle du MJ</h3>
+  <ul>
+    <li>Décrire le monde, jouer tous les PNJ et les dangers rencontrés.</li>
+    <li>Choisir la <strong>position</strong> et l'<strong>effet</strong> à chaque jet.</li>
+    <li>Infliger les <strong>conséquences</strong> sur les échecs et complications.</li>
+    <li>Suivre le fil rouge de la campagne et la veille de chaque PJ.</li>
+  </ul>
+
+  <h3>La boucle d'une partie</h3>
+  <p>La campagne suit un cycle répété :</p>
+  <ol>
+    <li><strong>Rumeur</strong> : la colonie bruisse d'une histoire (un lieu inconnu, un objet de valeur, une tribu qui demande de l'aide).</li>
+    <li><strong>Préparation</strong> : vous vous équipez, choisissez votre <strong>Load</strong>. Allégée par les flashbacks (« j'avais pensé à prendre une corde »).</li>
+    <li><strong>Expédition</strong> : voyage jusqu'à la destination, première approche.</li>
+    <li><strong>Exploration</strong> : le cœur du jeu : le lieu, ses dangers, ses trouvailles.</li>
+    <li><strong>Récupération</strong> : retour à la colonie.</li>
+    <li><strong>Downtime</strong> : soins, indulgence du vice, projets long terme, XP dépensée.</li>
+    <li><strong>Conséquences</strong> : ce qui change à la colonie suite à l'expédition.</li>
+  </ol>
+  <p>Une expédition tient en une session courte ou en plusieurs séances.</p>
+
+  <!-- III. DICE -->
+  <h2 id="dice">III. Le système de résolution</h2>
+
+  <p>Le jeu utilise un pool de dés à six faces (d6). Le principe : on lance plusieurs dés, on garde le meilleur, on lit le résultat selon une grille simple.</p>
+
+  <h3>Le pool de dés</h3>
+  <p>Le nombre de d6 à lancer est égal au <strong>score de l'action</strong> utilisée (de 0 à 4), modifié par les bonus :</p>
+  <ul>
+    <li><strong>+1d</strong> si une capacité spéciale s'applique</li>
+    <li><strong>+1d</strong> en <strong>poussant</strong> (coût : 2 stress)</li>
+    <li><strong>+1d</strong> en étant <strong>aidé</strong> par un camarade (coût : 1 stress pour celui qui aide)</li>
+  </ul>
+
+  <p><strong>Score 0, aucun bonus :</strong> le joueur lance <strong>2d6 et garde le pire</strong>. C'est un acte de désespoir.</p>
+
+  <h3>Lecture du résultat</h3>
+  <table>
+    <thead><tr><th>Meilleur dé</th><th>Résultat</th></tr></thead>
+    <tbody>
+      <tr><td>1, 2, 3</td><td><strong>Échec.</strong> L'action rate. Une conséquence tombe sur le PJ, dont la gravité dépend de la <em>position</em>.</td></tr>
+      <tr><td>4, 5</td><td><strong>Réussite avec complication.</strong> L'action passe, mais quelque chose se complique : stress, dégât, opportunité perdue, situation aggravée.</td></tr>
+      <tr><td>6</td><td><strong>Réussite franche.</strong> L'action passe, l'effet correspond à ce que le MJ avait annoncé.</td></tr>
+      <tr><td>Deux 6 ou plus</td><td><strong>Critique.</strong> L'effet est augmenté d'un cran. Quelque chose de plus se produit en faveur du PJ.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>La position</h3>
+  <p>Avant chaque jet, le MJ annonce la <strong>position</strong>, qui détermine la gravité des conséquences en cas d'échec :</p>
+  <ul>
+    <li><strong>Controlled</strong> : situation maîtrisée. L'échec ne fait pas grand mal ; on peut souvent reculer.</li>
+    <li><strong>Risky</strong> : position par défaut. L'échec a des conséquences réelles mais pas catastrophiques.</li>
+    <li><strong>Desperate</strong> : dos au mur. L'échec fait très mal. Réservé aux actes de bravoure pure ou aux situations sans retour.</li>
+  </ul>
+
+  <h3>L'effet</h3>
+  <p>Le MJ annonce aussi l'<strong>effet</strong>, qui détermine l'ampleur de la réussite :</p>
+  <ul>
+    <li><strong>Limited</strong> : réussite partielle ; vous obtenez quelque chose, mais moins que voulu.</li>
+    <li><strong>Standard</strong> : réussite normale, à hauteur de l'intention.</li>
+    <li><strong>Great</strong> : réussite ample. L'action paie au-delà.</li>
+  </ul>
+
+  <div class="callout note">
+    <strong>Position et effet ne sont pas des notes finales.</strong> Le MJ peut faire varier l'un sans l'autre. Pour augmenter l'effet sans changer la position, le joueur peut <em>pousser</em>. Pour rendre une action moins dangereuse, il peut accepter un effet moindre, etc. C'est une négociation, pas une sentence.
+  </div>
+
+  <!-- IV. STRESS -->
+  <h2 id="stress">IV. Stress, jauges &amp; traumas</h2>
+
+  <p>Trois jauges suivent l'état du personnage : une jauge <strong>active</strong> (le stress, qu'on dépense), et deux jauges <strong>passives</strong> (le physique et le mental, qui se remplissent quand on est touché).</p>
+
+  <h3>Le stress (jauge active, 9 cases)</h3>
+  <p>Le stress est la ressource principale du PJ. Il représente le coût intérieur de l'effort, de la peur, de la concentration extrême. On le <strong>dépense</strong> pour :</p>
+  <ul>
+    <li><strong>Pousser un jet</strong> : +1 dé en dépensant <strong>2 stress</strong> (à déclarer avant le jet)</li>
+    <li><strong>Aider un camarade</strong> : +1 dé sur le jet d'un autre PJ en dépensant <strong>1 stress</strong></li>
+    <li><strong>Résister à une conséquence</strong> imposée par le MJ ; réduit ou annule la conséquence, contre du stress</li>
+    <li><strong>Déclencher un flashback</strong> : un retour en arrière qui équipe le PJ d'une préparation qu'il « avait pensé à faire »</li>
+  </ul>
+  <p>Quand le stress <strong>déborde</strong> (10<sup>e</sup> case), le PJ prend immédiatement <strong>un trauma mental</strong> et son stress retombe à zéro.</p>
+
+  <div class="callout">
+    Penser le stress comme une <strong>ressource à dépenser activement</strong>, pas comme une jauge à éviter. Un PJ qui finit la séance avec 0 stress n'a pas été assez audacieux.
+  </div>
+
+  <h3>Jauge Physique (4 niveaux)</h3>
+  <p>Les blessures se cochent dans l'ordre. Chaque niveau a un impact narratif croissant ; le MJ peut imposer un malus si la blessure gêne l'action en cours.</p>
+  <ol>
+    <li><strong>Éraflure</strong></li>
+    <li><strong>Blessé</strong></li>
+    <li><strong>Grave</strong></li>
+    <li><strong>Mortel</strong> : mort ou mutilation invalidante.</li>
+  </ol>
+
+  <h3>Jauge Mentale (4 niveaux)</h3>
+  <p>Pareillement, pour ce que l'esprit endure à force de peur, d'épuisement, ou d'horreur :</p>
+  <ol>
+    <li><strong>Troublé</strong></li>
+    <li><strong>Hanté</strong></li>
+    <li><strong>Brisé</strong></li>
+    <li><strong>Perdu</strong> : folie irrécupérable, dissolution de l'identité.</li>
+  </ol>
+
+  <h3>Les traumas</h3>
+  <p>À chaque débordement de stress, le joueur choisit (ou tire) un <strong>trauma mental</strong> permanent dans la liste de son playbook. Le trauma est une marque sur le personnage : une manière d'être désormais cassée, dont le joueur doit tenir compte en rôle play.</p>
+  <p>Au <strong>4<sup>e</sup> trauma cumulé</strong>, le personnage est définitivement retiré du jeu. Le joueur raconte comment il s'effondre : désertion, monastère, folie, suicide noble, fondation d'un culte, disparition dans la jungle.</p>
+
+  <!-- V. ACTIONS -->
+  <h2 id="actions">V. Attributs et actions</h2>
+
+  <p>Toute action incertaine du PJ passe par l'une des <strong>12 actions</strong>, regroupées en <strong>3 attributs</strong>.</p>
+
+  <table>
+    <thead><tr><th>Perspicacité</th><th>Adresse</th><th>Détermination</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Pister</strong> : suivre des traces, lire un paysage, retrouver un chemin</td>
+        <td><strong>Manœuvrer</strong> : équilibre, courses, escalade, conduite, esquive</td>
+        <td><strong>Communier</strong> : méditer, prier, écouter ce qui ne se dit pas</td>
+      </tr>
+      <tr>
+        <td><strong>Déchiffrer</strong> : lire, traduire, interpréter symboles et documents</td>
+        <td><strong>Rôder</strong> : discrétion, embuscade, infiltration, vol</td>
+        <td><strong>Commander</strong> : donner des ordres, mener un groupe, imposer l'autorité</td>
+      </tr>
+      <tr>
+        <td><strong>Observer</strong> : remarquer un détail, sentir un piège, lire une scène</td>
+        <td><strong>Combattre</strong> : corps à corps, armes blanches, lutte</td>
+        <td><strong>Côtoyer</strong> : sociabilité, étiquette, lecture des intentions</td>
+      </tr>
+      <tr>
+        <td><strong>Bricoler</strong> : réparer, fabriquer, crocheter, soigner avec outils</td>
+        <td><strong>Tirer</strong> : armes à distance (arc, arquebuse, pistolet)</td>
+        <td><strong>Persuader</strong> : convaincre, séduire, négocier, mentir</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Les scores d'action</h3>
+  <ul>
+    <li>Chaque action a un score de <strong>0 à 4</strong>.</li>
+    <li>Le score = le <strong>nombre de dés</strong> à lancer pour cette action.</li>
+    <li>À la création, le plafond est <strong>2</strong> ; le score 3 puis 4 se débloque par la progression.</li>
+  </ul>
+
+  <!-- VI. CRÉATION -->
+  <h2 id="creation">VI. Création de personnage</h2>
+
+  <p>La création d'un personnage prend une quinzaine de minutes pour un joueur expérimenté, trente pour un débutant. Elle suit dix étapes.</p>
+
+  <h3>1. Choisir un playbook</h3>
+  <p>Un <strong>playbook</strong> est un archétype : un rôle prédéfini avec ses spécialités, ses capacités, son équipement type. Six playbooks existent ; idéalement chaque joueur autour de la table en prend un différent. Votre MJ vous donnera le détail du playbook de votre choix.</p>
+
+  <h3>2. Choisir une Origine</h3>
+  <p>Chaque playbook propose six <strong>Origines</strong> géographiques et sociales du monde eurafrasiatique (Castille, Italie, Saint-Empire, monde sépharade, monde musulman, etc.). Chaque origine donne une <strong>faveur narrative</strong> et un <strong>fardeau</strong> correspondant. Ce n'est pas un bonus mécanique : c'est un levier de fiction.</p>
+
+  <h3>3. Répartir les points d'action</h3>
+  <p>Vous avez <strong>7 points</strong> à répartir sur les 12 actions, dans la limite de <strong>2 par action à la création</strong>. Le playbook fixe une partie des points ; il vous reste typiquement <strong>2 points libres</strong> à placer où vous voulez.</p>
+
+  <h3>4. Choisir une capacité spéciale</h3>
+  <p>Chaque playbook propose <strong>8 capacités spéciales</strong>. Vous en choisissez <strong>1 à la création</strong>. Les autres se débloqueront en cours de campagne (8 XP chacune). La capacité définit votre spécificité mécanique : bonus de dés en certaines circonstances, ressource unique, PNJ allié, mécanique narrative.</p>
+
+  <h3>5. Choisir un Vice</h3>
+  <p>Chaque playbook propose <strong>6 vices</strong>. Le vice est votre <strong>exutoire</strong> en downtime : entre deux expéditions, vous l'indulgez pour soulager du stress. Le vice n'est pas un défaut moral, c'est un mécanisme. Mais l'indulgence excessive crée des complications (<em>surmenage</em>).</p>
+
+  <h3>6. Écrire sa Veille</h3>
+  <p>La <strong>veille</strong> est une <strong>question</strong> qui guide l'arc personnel du PJ sur toute la campagne. Vous l'écrivez vous-même, ou la choisissez parmi les exemples du playbook. Le MJ s'en sert pour orienter vos dilemmes.</p>
+  <blockquote>
+    « Suis-je devenu mon père ? » &nbsp;·&nbsp; « Le monde est-il vraiment tel qu'il est écrit ? » &nbsp;·&nbsp; « Combien d'âmes faudra-t-il pour payer celles que j'ai prises ? »
+  </blockquote>
+
+  <h3>7. PNJ attaché (si capacité)</h3>
+  <p>Certaines capacités donnent un PNJ allié : écuyer, disciple, frère d'armes. Si vous avez cette capacité, vous le définissez maintenant : nom, rapport au PJ, 3 actions à 1 point. Ce PNJ peut être <strong>blessé à votre place</strong> une fois par expédition, et peut <strong>mourir</strong>.</p>
+
+  <h3>8. Détails fictionnels</h3>
+  <ul>
+    <li>Nom complet du personnage.</li>
+    <li>Apparence en 1-2 phrases.</li>
+    <li>Un détail révélateur : un tic, une cicatrice, un objet jamais quitté, une manie.</li>
+  </ul>
+
+  <h3>9. Préparer le Load de la première mission</h3>
+  <p>Choisissez votre niveau de <strong>Load</strong> (3, 5, 6, ou 7+ ; voir chapitre VIII). Vous ne déclarez pas votre équipement à l'avance : vous cocherez les objets <strong>au moment où vous en aurez besoin</strong>, tant que vous ne dépassez pas la limite.</p>
+
+  <h3>10. Initialiser les jauges</h3>
+  <ul>
+    <li>Stress : 0/9</li>
+    <li>Jauge Physique : vide</li>
+    <li>Jauge Mentale : vide</li>
+    <li>Traumas : 0</li>
+    <li>XP : 0</li>
+  </ul>
+
+  <!-- VII. IDENTITÉ -->
+  <h2 id="identity">VII. Vice, veille &amp; identité</h2>
+
+  <p>Trois éléments donnent à un PJ son identité au-delà de ses scores : l'<strong>origine</strong>, le <strong>vice</strong>, la <strong>veille</strong>. Aucun n'est mécanique au sens strict ; ce sont tous des leviers de fiction qui orientent vos choix et ceux du MJ.</p>
+
+  <h3>L'origine</h3>
+  <p>D'où vient le personnage ? Pas seulement géographiquement. Quelle classe ? Quelle religion ? Quelle communauté l'a formé ? Chaque origine porte une <strong>faveur</strong> (un avantage de réseau, de langue, de savoir) et un <strong>fardeau</strong> (une dette, une menace, un secret).</p>
+  <p>La faveur s'utilise narrativement : à un moment, vous direz « j'ai connu cette personne à Tolède » et ce sera vrai. Le fardeau, lui, vous rattrapera. Le MJ y veille.</p>
+
+  <h3>Le vice</h3>
+  <p>Tous les PJ ont un vice. Tous. Ce n'est pas un défaut de caractère, c'est une <strong>soupape</strong>. Le métier d'explorateur est invivable sans exutoire : la chair, le vin, le jeu, l'orgueil, la foi exacerbée, l'étude obsessionnelle, l'opium…</p>
+  <p>En <strong>downtime</strong>, le joueur peut indulger son vice : il jette <strong>autant de d6 que son score de Vice</strong>, garde le meilleur, et retire ce nombre de stress. Si le résultat dépasse le stress restant, l'excès se transforme en <strong>surmenage</strong> : une complication narrative pour le PJ.</p>
+
+  <h3>La veille</h3>
+  <p>Question écrite en haut de la fiche, à voix basse pour soi-même. La veille n'a pas de réponse au premier acte. Elle s'usine en jouant. Si vous rentrez d'expédition en y ayant trouvé un début de réponse (ou un retournement), votre personnage en sort plus grand. Si vous l'esquivez, elle vous attrape.</p>
+  <p>Le MJ relit votre veille avant chaque session. C'est de là que viennent les dilemmes qui ne tomberont que sur vous.</p>
+
+  <!-- VIII. LOAD -->
+  <h2 id="load">VIII. Équipement et Load</h2>
+
+  <p>Le système d'équipement ne fonctionne pas comme dans les JDR classiques. Vous <strong>ne listez pas votre inventaire à l'avance</strong> ; vous choisissez une <strong>charge</strong> globale au départ, et vous <strong>cochez les objets au fur et à mesure</strong> de leur usage en jeu.</p>
+
+  <h3>Niveaux de Load</h3>
+  <table>
+    <thead><tr><th>Load</th><th>Niveau</th><th>Effet</th></tr></thead>
+    <tbody>
+      <tr><td>3</td><td>Léger</td><td>Mobile, discret. Peu d'objets.</td></tr>
+      <tr><td>5</td><td>Normal</td><td>Équipement standard d'expédition.</td></tr>
+      <tr><td>6</td><td>Lourd</td><td>Bien équipé, mais visible et intimidant. Malus en discrétion.</td></tr>
+      <tr><td>7+</td><td>Surchargé</td><td>Malus de mobilité ; à éviter sauf nécessité.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Cocher à l'usage</h3>
+  <p>Quand votre PJ a besoin d'un objet en jeu (une corde, une dague, une trousse de premiers soins), vous le cochez sur votre fiche en <strong>respectant votre Load</strong>. Un objet coûte 1 ou 2 cases.</p>
+  <p>Ce système oblige à la <strong>discipline rétroactive</strong> : vous ne pouvez pas avoir <em>tout</em> emporté. Si vous avez déjà coché 5 objets et que votre Load est 5, vous n'avez plus la place pour la corde : vous ne l'avez pas prise.</p>
+
+  <h3>Ressources</h3>
+  <p>Au-delà des objets, la fiche compte vos <strong>ressources consommables</strong> : rations, eau, tirs (poudre &amp; plomb), torches, doses de remèdes, et autres selon votre playbook et la mission. Ces compteurs descendent en jeu et se rétablissent en <strong>downtime</strong>.</p>
+
+  <!-- IX. AU-DELÀ DES RÈGLES -->
+  <h2 id="magic">IX. Au-delà des règles</h2>
+
+  <p>À la création de votre personnage, vous êtes une personne ordinaire de votre époque. Vous savez ce que vous savez : combattre, parler, observer, déchiffrer, peut-être soigner. Vous ne maîtrisez rien d'autre.</p>
+
+  <p>Le nouveau continent peut changer cela. Si votre personnage rencontre quelque chose qui sort du cadre de ces règles, votre MJ vous l'expliquera <strong>au moment où cela vous concernera</strong>. D'ici là, vous n'avez besoin que de ce qui est écrit dans ce guide.</p>
+
+  <div class="callout note">
+    Si vous avez joué à d'autres JDR avec des pouvoirs choisis à la création, oubliez le réflexe. Ici, vous ne choisissez que ce qui est dans ce guide. Si autre chose vient à votre personnage, vous le découvrirez en jouant.
+  </div>
+
+  <!-- X. PROGRESSION -->
+  <h2 id="xp">X. Progression</h2>
+
+  <p>L'<strong>XP</strong> (expérience) se gagne en cours de campagne, typiquement en fin de session, selon ce qui a été joué : actions risquées, dilemmes affrontés, scènes liées à la veille, indulgence du vice quand elle a coûté quelque chose.</p>
+  <p>L'XP s'accumule sur la fiche. Quand le PJ atteint <strong>8 XP</strong>, il peut <strong>débloquer une nouvelle capacité spéciale</strong> dans la liste de son playbook (il y en a 8 ; il en a une à la création, donc 7 à débloquer au fil de la campagne).</p>
+
+  <div class="callout note">
+    <strong>Note :</strong> certaines règles de progression (coût d'achat d'une action supplémentaire, rythme exact de gain d'XP par session) sont en cours d'ajustement avec votre MJ. Référez-vous à lui en table.
+  </div>
+
+  <!-- XI. MORT -->
+  <h2 id="death">XI. Mort &amp; folie</h2>
+
+  <p>Ce jeu est <strong>létal</strong>. Cela ne veut pas dire que les PJ meurent souvent. Cela veut dire que la peur de la mort doit être réelle, que les choix prudents doivent être intéressants, que la survie n'est jamais acquise.</p>
+
+  <h3>Deux sorties</h3>
+  <p>Un personnage peut être retiré du jeu de deux manières :</p>
+  <ul>
+    <li><strong>Mort physique</strong> : au niveau ultime de la jauge Physique.</li>
+    <li><strong>Effondrement mental</strong> : au niveau ultime de la jauge Mentale, ou au 4<sup>e</sup> trauma. Folie, dissolution, retrait.</li>
+  </ul>
+
+  <h3>Raconter la sortie</h3>
+  <p>Quand votre PJ sort du jeu, c'est <strong>vous</strong> qui racontez comment. Pas le MJ. Vous décidez si votre personnage déserte, se cloître, devient fou, fonde un culte, ou se laisse mourir en duel. La fiche se ferme par votre voix.</p>
+
+  <!-- XII. LEXIQUE -->
+  <h2 id="lex">XII. Lexique</h2>
+
+  <p>Référence alphabétique des termes de jeu, utile pendant la table.</p>
+
+  <dl class="lexicon">
+    <dt>Action</dt><dd>Une des 12 compétences. Le score d'action (0 à 4) = nombre de dés à lancer.</dd>
+
+    <dt>Aide</dt><dd>Un PJ peut aider un autre PJ en dépensant 1 stress : +1 dé sur le jet du PJ aidé.</dd>
+
+    <dt>Attribut</dt><dd>Une des 3 catégories qui regroupent les actions : Perspicacité, Adresse, Détermination.</dd>
+
+    <dt>Capacité spéciale</dt><dd>Avantage mécanique propre au playbook. 8 par playbook, 1 à la création, autres à 8 XP.</dd>
+
+    <dt>Case d'objet</dt><dd>Unité de Load. Un objet pèse 1 ou 2 cases. On coche à l'usage, pas à l'avance.</dd>
+
+    <dt>Complication</dt><dd>Conséquence d'un jet 4-5 : l'action passe mais quelque chose tourne mal.</dd>
+
+    <dt>Critique</dt><dd>Jet montrant deux 6 ou plus. Effet augmenté.</dd>
+
+    <dt>Downtime</dt><dd>Phase entre deux expéditions : indulgence du vice, soins, projets, dépense d'XP.</dd>
+
+    <dt>Échec</dt><dd>Meilleur dé 1-3. L'action ne passe pas, conséquence selon la position.</dd>
+
+    <dt>Effet</dt><dd>Ampleur d'une réussite : Limited / Standard / Great.</dd>
+
+    <dt>Flashback</dt><dd>Retour en arrière déclaré par un joueur en pleine scène, pour avoir « pensé à prendre » quelque chose. Coûte du stress selon l'audace.</dd>
+
+    <dt>Indulgence</dt><dd>Action de downtime : on jette son score de Vice en d6, on garde le meilleur, on retire ce nombre de stress.</dd>
+
+    <dt>Jauges</dt><dd>Physique (Éraflure → Mortel) et Mentale (Troublé → Perdu). 4 niveaux chacune.</dd>
+
+    <dt>Jet</dt><dd>Lancer de dés : autant de d6 que le score d'action, on garde le meilleur.</dd>
+
+    <dt>Load</dt><dd>Charge globale choisie en début d'expédition : 3 (Léger), 5 (Normal), 6 (Lourd), 7+ (Surchargé).</dd>
+
+    <dt>Origine</dt><dd>Provenance géographique/sociale du PJ. Donne une faveur et un fardeau, pas de bonus mécanique.</dd>
+
+    <dt>Playbook</dt><dd>Archétype de personnage : rôle prédéfini avec actions favorisées, 8 capacités, équipement, vices, traumas.</dd>
+
+    <dt>Pool de dés</dt><dd>Nombre de d6 à lancer, égal au score d'action modifié des +1d.</dd>
+
+    <dt>Pool à 0</dt><dd>Si le PJ n'a aucun dé : 2d6, garde le pire.</dd>
+
+    <dt>Position</dt><dd>Controlled / Risky / Desperate. Détermine la gravité des conséquences d'un échec.</dd>
+
+    <dt>Push (Pousser)</dt><dd>Dépenser 2 stress pour +1 dé sur son propre jet, avant de lancer.</dd>
+
+    <dt>Réussite</dt><dd>Meilleur dé 4-5 = réussite avec complication. Meilleur dé 6 = réussite franche. Deux 6 ou plus = critique.</dd>
+
+    <dt>Résister</dt><dd>Dépenser du stress pour réduire ou annuler une conséquence imposée par le MJ.</dd>
+
+    <dt>Stress</dt><dd>Jauge active de 9 cases. Dépensée pour push, aide, résister, flashback. Déborde → trauma mental.</dd>
+
+    <dt>Surmenage</dt><dd>Complication suite à une indulgence de vice trop forte (excès de stress soulagé). Le MJ inflige une complication narrative.</dd>
+
+    <dt>Trauma</dt><dd>Marque permanente du PJ (mentale au stress débordant). 4 cumulés = retrait définitif.</dd>
+
+    <dt>Veille</dt><dd>Question personnelle écrite sur la fiche, qui guide l'arc du PJ.</dd>
+
+    <dt>Vice</dt><dd>Exutoire choisi à la création. Sert à retirer du stress en downtime.</dd>
+
+    <dt>XP</dt><dd>Expérience accumulée. 8 XP = une nouvelle capacité spéciale.</dd>
+  </dl>
+
+  <div class="pull">
+    « Tout ce que je sais tient dans un coffre.<br>Tout ce qu'il me reste à apprendre tient dans un continent. »
+  </div>
+
+</div>
+
+<script>
+function printGuide() {
+  const originalTitle = document.title;
+  document.title = "";
+  const restore = () => {
+    document.title = originalTitle;
+    window.removeEventListener("afterprint", restore);
+  };
+  window.addEventListener("afterprint", restore);
+  setTimeout(() => window.print(), 50);
+  setTimeout(() => { if (!document.title) document.title = originalTitle; }, 5000);
+}
+</script>
+
+</body>
+</html>
