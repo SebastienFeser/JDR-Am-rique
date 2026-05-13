@@ -356,6 +356,145 @@ label {
 .equip-row .box { width: 14px; height: 14px; flex-shrink: 0; }
 .equip-row input { font-size: 15px; }
 
+/* === Ressources === */
+
+.resources-grid {
+  display: flex;
+  gap: 6px;
+  flex-wrap: nowrap;
+  margin-bottom: 14px;
+  align-items: stretch;
+}
+
+.resource-slot {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  gap: 3px;
+}
+
+.resource-slot input.resource-label {
+  font-family: "IM Fell English SC", serif;
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  color: var(--ink-light);
+  text-align: center;
+  width: 100%;
+  padding: 0 2px;
+  border-bottom: 1px dotted var(--ink-light);
+}
+
+.resource-slot input.resource-label:focus {
+  color: var(--ink);
+}
+
+.resource-slot input.resource-value {
+  font-family: "IM Fell English SC", serif;
+  font-size: 16px;
+  text-align: center;
+  width: 100%;
+  padding: 2px 0;
+  border-bottom: 1px solid var(--ink);
+}
+
+/* === Coffre === */
+
+.coffre-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 24px;
+}
+
+.coffre-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.coffre-row .bullet {
+  font-family: serif;
+  color: var(--ink-light);
+  flex-shrink: 0;
+}
+
+.coffre-row input {
+  flex: 1;
+  font-size: 15px;
+}
+
+.money-row {
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+  gap: 14px;
+  margin: 4px 0 0;
+  width: 100%;
+  padding: 8px 16px;
+  border: 1px solid var(--ink-light);
+  border-radius: 2px;
+  background: rgba(255,255,255,0.15);
+  flex-wrap: nowrap;
+}
+
+.money-label {
+  font-family: "IM Fell English SC", serif;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  white-space: nowrap;
+  color: var(--ink-light);
+  margin-right: 4px;
+}
+
+.coin {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  white-space: nowrap;
+  flex: 1;
+  min-width: 0;
+}
+
+.coin-name-fixed {
+  font-family: "IM Fell English SC", serif;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  color: var(--ink-light);
+}
+
+input.coin-name {
+  font-family: "IM Fell English SC", serif;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  color: var(--ink-light);
+  flex: 1;
+  min-width: 0;
+  padding: 0 2px;
+  text-align: right;
+  border-bottom: 1px dotted var(--ink-light);
+}
+
+input.coin-name:focus {
+  color: var(--ink);
+}
+
+.money-row input[type="number"] {
+  font-family: "IM Fell English SC", serif;
+  font-size: 15px;
+  text-align: center;
+  width: 56px;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--ink);
+}
+
+.money-label {
+  flex-shrink: 0;
+}
+
+.coin-name-fixed {
+  flex-shrink: 0;
+}
+
 /* === XP === */
 
 .xp-row {
@@ -576,6 +715,31 @@ label {
   .equip-row span { font-size: 11pt; }
   .equipment-list { gap: 3px; }
 
+  /* Ressources */
+  .resources-grid {
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+  .resource-slot { gap: 2px; }
+  .resource-slot input.resource-label { font-size: 7.5pt; }
+  .resource-slot input.resource-value { font-size: 11pt; padding: 1px 0; }
+
+  /* Coffre */
+  .coffre-list { gap: 3px 18px; }
+  .coffre-row { gap: 6px; }
+  .coffre-row input { font-size: 10.5pt; }
+  .coffre-row .bullet { font-size: 9pt; color: #555 !important; }
+  .money-row {
+    padding: 4px 12px;
+    gap: 12px;
+    background: white !important;
+  }
+  .money-label { font-size: 9pt; }
+  .coin-name-fixed { font-size: 9pt; color: black !important; }
+  input.coin-name { font-size: 9pt; }
+  .money-row input[type="number"] { font-size: 11pt; width: 44px; }
+  .coin { gap: 4px; }
+
   /* Forcer la couleur des bordures de champs */
   input, textarea {
     border-bottom-style: solid !important;
@@ -739,26 +903,14 @@ label {
     <input type="text" data-key="vice" placeholder="Le jeu, la chair, le vin, l'orgueil, l'étude...">
   </div>
 
-  <!-- PNJ ATTACHÉ -->
-  <h2>PNJ attaché <span style="font-size:13px; color:var(--ink-light); font-style:italic; letter-spacing:0;">— si capacité prise</span></h2>
-  <div class="two-col">
-    <div>
-      <label>Nom &amp; rapport au PJ</label>
-      <input type="text" data-key="pnj-nom" placeholder="Écuyer, disciple, sergent...">
-    </div>
-    <div>
-      <label>3 actions à 1 point</label>
-      <input type="text" data-key="pnj-actions" placeholder="Ex. Combattre 1, Pister 1, Côtoyer 1">
-    </div>
-  </div>
-  <div style="margin-top:6px;">
-    <label>Notes</label>
-    <textarea data-key="pnj-notes" rows="2" placeholder="Apparence, histoire, lien..."></textarea>
-  </div>
+  <!-- COFFRE -->
+  <h2>Coffre <span style="font-size:13px; color:var(--ink-light); font-style:italic; letter-spacing:0;">— à la colonie</span></h2>
+  <p style="text-align:center; color:var(--ink-light); font-style:italic; margin: 4px 0 10px;">Réserves, armes de rechange, vêtements, objets précieux et souvenirs laissés à la base entre les expéditions.</p>
+  <div class="coffre-list" id="coffre-list"></div>
 
-  <!-- LOAD & ÉQUIPEMENT -->
-  <h2>Load &amp; Équipement</h2>
-  <p style="text-align:center; color:var(--ink-light); font-style:italic; margin: 4px 0 8px;">Choisir le niveau en début d'expédition. Cocher les objets au fur et à mesure de leur usage.</p>
+  <!-- LOAD -->
+  <h2>Load</h2>
+  <p style="text-align:center; color:var(--ink-light); font-style:italic; margin: 4px 0 8px;">Choisir le niveau en début d'expédition.</p>
   <div style="display:flex; justify-content:center;">
     <div class="load-selector" data-load>
       <button type="button" class="load-option" data-value="3">3 — Léger</button>
@@ -768,16 +920,39 @@ label {
     </div>
   </div>
 
-  <div class="two-col">
-    <div>
-      <h3>Objets standards</h3>
-      <div class="equipment-list" id="standard-equip"></div>
-    </div>
-    <div>
-      <h3>Objets de playbook</h3>
-      <div class="equipment-list" id="playbook-equip"></div>
-    </div>
+  <!-- RESSOURCES -->
+  <h2>Ressources</h2>
+  <p style="text-align:center; color:var(--ink-light); font-style:italic; margin: 4px 0 10px;">Libellé + quantité. À remplir selon le personnage et l'expédition.</p>
+  <div class="resources-grid" id="resources-list"></div>
+
+  <div class="money-row">
+    <span class="money-label">Bourse</span>
+    <span class="coin">
+      <span class="coin-name-fixed">Ducats</span>
+      <input type="number" data-key="ducats" min="0">
+    </span>
+    <span class="coin">
+      <input type="text" class="coin-name" data-key="coin2-name">
+      <input type="number" data-key="coin2-val" min="0">
+    </span>
+    <span class="coin">
+      <input type="text" class="coin-name" data-key="coin3-name">
+      <input type="number" data-key="coin3-val" min="0">
+    </span>
+    <span class="coin">
+      <input type="text" class="coin-name" data-key="coin4-name">
+      <input type="number" data-key="coin4-val" min="0">
+    </span>
+    <span class="coin">
+      <input type="text" class="coin-name" data-key="coin5-name">
+      <input type="number" data-key="coin5-val" min="0">
+    </span>
   </div>
+
+  <!-- ÉQUIPEMENT DE PLAYBOOK -->
+  <h2>Équipement</h2>
+  <p style="text-align:center; color:var(--ink-light); font-style:italic; margin: 4px 0 8px;">Armes, instruments, objets propres au playbook. Cocher quand l'objet est utilisé en jeu.</p>
+  <div class="equipment-list" id="playbook-equip"></div>
 
   <!-- XP -->
   <h2>Expérience</h2>
@@ -801,16 +976,8 @@ const ACTIONS = ["pister","dechiffrer","observer","bricoler",
                  "manoeuvrer","roder","combattre","tirer",
                  "communier","commander","cotoyer","persuader"];
 
-const STANDARD_ITEMS = [
-  "Vêtements adaptés au climat",
-  "Sac de voyage",
-  "Vivres pour quelques jours",
-  "Trousse de premiers soins",
-  "Briquet et chandelles",
-  "Corde solide (2)",
-  "Outil polyvalent",
-  "Monnaie / objets de troc",
-];
+const RESOURCE_SLOTS_COUNT = 6;
+const COFFRE_SLOTS_COUNT = 12;
 
 const state = {
   // texte
@@ -819,9 +986,13 @@ const state = {
   phrase: "", veille: "",
   "capacite-depart": "", "capacites-acquises": "",
   vice: "",
-  "pnj-nom": "", "pnj-actions": "", "pnj-notes": "",
   notes: "",
   trauma1: "", trauma2: "", trauma3: "", trauma4: "",
+  ducats: "",
+  "coin2-name": "", "coin2-val": "",
+  "coin3-name": "", "coin3-val": "",
+  "coin4-name": "", "coin4-val": "",
+  "coin5-name": "", "coin5-val": "",
   // actions (0-4)
   actions: Object.fromEntries(ACTIONS.map(a => [a, 0])),
   // pistes
@@ -833,9 +1004,12 @@ const state = {
   traumasCoches: [false, false, false, false],
   // load
   load: null,
-  // équipement
-  standardEquip: STANDARD_ITEMS.map(name => ({ name, checked: false })),
+  // ressources (slots libres : label + valeur numérique)
+  resourceSlots: Array.from({length: RESOURCE_SLOTS_COUNT}, () => ({ label: "", value: "" })),
+  // équipement de playbook (emporté en expédition)
   playbookEquip: Array.from({length: 12}, () => ({ name: "", checked: false })),
+  // coffre (laissé à la colonie)
+  coffre: Array.from({length: COFFRE_SLOTS_COUNT}, () => ""),
 };
 
 // === Sauvegarde / chargement ===
@@ -853,8 +1027,20 @@ function load() {
     // s'assurer que les tableaux ont la bonne longueur
     if (!Array.isArray(state.traumasCoches) || state.traumasCoches.length !== 4)
       state.traumasCoches = [false, false, false, false];
-    if (!Array.isArray(state.standardEquip) || state.standardEquip.length !== STANDARD_ITEMS.length)
-      state.standardEquip = STANDARD_ITEMS.map(name => ({ name, checked: false }));
+    if (!Array.isArray(state.resourceSlots)) {
+      state.resourceSlots = Array.from({length: RESOURCE_SLOTS_COUNT}, () => ({ label: "", value: "" }));
+    } else if (state.resourceSlots.length !== RESOURCE_SLOTS_COUNT) {
+      const existing = state.resourceSlots.slice(0, RESOURCE_SLOTS_COUNT);
+      while (existing.length < RESOURCE_SLOTS_COUNT) existing.push({ label: "", value: "" });
+      state.resourceSlots = existing;
+    }
+    if (!Array.isArray(state.coffre)) {
+      state.coffre = Array.from({length: COFFRE_SLOTS_COUNT}, () => "");
+    } else if (state.coffre.length !== COFFRE_SLOTS_COUNT) {
+      const existing = state.coffre.slice(0, COFFRE_SLOTS_COUNT);
+      while (existing.length < COFFRE_SLOTS_COUNT) existing.push("");
+      state.coffre = existing;
+    }
   } catch (e) {
     console.error("Erreur de chargement", e);
   }
@@ -976,25 +1162,59 @@ function render() {
     btn.classList.toggle("active", parseInt(btn.dataset.value) === state.load);
   });
 
-  // Équipement standard
-  const stdContainer = document.getElementById("standard-equip");
-  stdContainer.innerHTML = "";
-  state.standardEquip.forEach((item, idx) => {
-    const row = document.createElement("div");
-    row.className = "equip-row";
-    const box = document.createElement("div");
-    box.className = "box" + (item.checked ? " filled" : "");
-    box.addEventListener("click", () => {
-      state.standardEquip[idx].checked = !state.standardEquip[idx].checked;
-      render();
+  // Ressources : 12 slots libres (label + valeur numérique)
+  const resContainer = document.getElementById("resources-list");
+  resContainer.innerHTML = "";
+  state.resourceSlots.forEach((slot, idx) => {
+    const div = document.createElement("div");
+    div.className = "resource-slot";
+
+    const labelInput = document.createElement("input");
+    labelInput.type = "text";
+    labelInput.className = "resource-label";
+    labelInput.value = slot.label;
+    labelInput.addEventListener("input", () => {
+      state.resourceSlots[idx].label = labelInput.value;
       scheduleSave();
     });
-    const span = document.createElement("span");
-    span.textContent = item.name;
-    span.style.flex = "1";
-    row.appendChild(box);
-    row.appendChild(span);
-    stdContainer.appendChild(row);
+
+    const valueInput = document.createElement("input");
+    valueInput.type = "number";
+    valueInput.className = "resource-value";
+    valueInput.min = 0;
+    valueInput.value = slot.value;
+    valueInput.addEventListener("input", () => {
+      state.resourceSlots[idx].value = valueInput.value;
+      scheduleSave();
+    });
+
+    div.appendChild(labelInput);
+    div.appendChild(valueInput);
+    resContainer.appendChild(div);
+  });
+
+  // Coffre (objets laissés à la colonie)
+  const coffreContainer = document.getElementById("coffre-list");
+  coffreContainer.innerHTML = "";
+  state.coffre.forEach((item, idx) => {
+    const row = document.createElement("div");
+    row.className = "coffre-row";
+
+    const bullet = document.createElement("span");
+    bullet.className = "bullet";
+    bullet.textContent = "✦";
+
+    const input = document.createElement("input");
+    input.type = "text";
+    input.value = item;
+    input.addEventListener("input", () => {
+      state.coffre[idx] = input.value;
+      scheduleSave();
+    });
+
+    row.appendChild(bullet);
+    row.appendChild(input);
+    coffreContainer.appendChild(row);
   });
 
   // Équipement playbook
