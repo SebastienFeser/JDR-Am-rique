@@ -23,6 +23,11 @@ const NAV = [
     { href: "pages/personnages.html", label: "Personnages-joueurs", status: "done" },
     { href: "pages/campagne.html", label: "Structure de campagne", status: "done" },
   ]},
+  { section: "Quêtes", items: [
+    { href: "pages/quetes-couronne.html", label: "Quêtes de la Couronne", status: "wip" },
+    { href: "pages/quetes-gouverneur.html", label: "Quêtes du Gouverneur", status: "wip" },
+    { href: "pages/quetes-autres.html", label: "Quêtes autres", status: "wip" },
+  ]},
   { section: "Système — couches validées", items: [
     { href: "pages/systeme-moteur.html", label: "Moteur de base", status: "done" },
     { href: "pages/systeme-attributs.html", label: "Attributs & actions", status: "done" },
